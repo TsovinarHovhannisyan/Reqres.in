@@ -2,6 +2,7 @@ import allure
 import pytest
 import requests
 
+
 base_url = "https://reqres.in/api"
 
 @allure.feature('User Feature')

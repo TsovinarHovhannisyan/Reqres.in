@@ -1,9 +1,10 @@
 import allure
 import pytest
 import requests
+import test_6_creat_user_Post
 
 base_url = "https://reqres.in/api"
-user_id = 2
+
 
 @allure.feature('User Feature')
 @allure.suite('Partial Update User Suite')
@@ -19,7 +20,7 @@ def test_partial_update_user():
 
     with allure.step('Send PATCH request to partially update a user'):
         response = requests.patch(
-            f'{base_url}/users/{user_id}',
+            f'{base_url}/users/{test_6_creat_user_Post.user_id}',
             json=data,
             headers=headers
         )

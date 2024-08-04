@@ -1,9 +1,10 @@
 import allure
 import pytest
 import requests
+import test_6_creat_user_Post
 
 base_url = "https://reqres.in/api"
-user_id = 2
+
 
 @allure.feature('User Feature')
 @allure.suite('Delete User Suite')
@@ -17,7 +18,7 @@ def test_delete_user():
 
     with allure.step('Send DELETE request to delete a user'):
         response = requests.delete(
-            f'{base_url}/users/{user_id}',
+            f'{base_url}/users/{test_6_creat_user_Post.user_id}',
             headers=headers
         )
 
