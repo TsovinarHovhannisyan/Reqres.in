@@ -37,5 +37,11 @@ def test_get_users_page_2():
             assert 'last_name' in user, "User last name is missing"
             assert 'avatar' in user, "User avatar is missing"
 
+    with allure.step('Verify support fields'):
+        assert 'support' in response_data, "The response does not contain 'support'"
+        support_data = response_data['support']
+        assert 'url' in support_data, "Support URL is missing"
+        assert 'text' in support_data, "Support text is missing"
+
     with allure.step('Printing response'):
         allure.attach(response.text, 'Response', allure.attachment_type.JSON)

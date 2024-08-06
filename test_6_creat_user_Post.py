@@ -42,6 +42,7 @@ def test_create_user():
         assert "job" in response_data, "The response does not contain 'job'"
         assert response_data['job'] == data['job'], f"Expected job to be {data['job']} but got '{response_data['job']}'"
 
+
     with allure.step('Printing response'):
         allure.attach(response.text, 'Response', allure.attachment_type.JSON)
 

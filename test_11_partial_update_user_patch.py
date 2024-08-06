@@ -14,6 +14,7 @@ base_url = "https://reqres.in/api"
 @pytest.mark.regression
 def test_partial_update_user():
     data = {
+        "name": "morpheus",
         "job": "zion resident"
     }
     headers = {'Content-Type': 'application/json'}
@@ -32,6 +33,12 @@ def test_partial_update_user():
 
     with allure.step('Verify "job" is correct'):
         assert response_data['job'] == data['job'], f"Expected job to be {data['job']} but got '{response_data['job']}'"
+
+    with allure.step('Verify "name" is correct'):
+        assert response_data['name'] == data['name'], f"Expected name to be {data['name']} but got '{response_data['name']}'"
+
+    with allure.step('Verify response contains "updatedAt"'):
+        assert 'updatedAt' in response_data, "Response should contain 'updatedAt' field"
 
     with allure.step('Printing response'):
         allure.attach(response.text, 'Response', allure.attachment_type.JSON)
